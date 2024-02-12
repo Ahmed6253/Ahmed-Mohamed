@@ -1,22 +1,28 @@
-import logo from '../../assets/LOGO.svg';
+import Logo from '../logo';
 
 import BurgerIcon from './burgerIcon';
 import HeaderLinkes from './headerLinks';
-export default function Header() {
+export default function Header({ data }) {
   //reusable classes
   const linksStyle =
     'cursor-pointer hover:scale-105 transition-transform  text-lightcoffee font-bold text-xl m-0';
 
   const containerStyle = 'md:flex justify-evenly w-3/5 hidden';
 
+  const logoStyle = 'w-16 md:w-auto md:h-auto h-16 md:m-auto mx-5';
+
   return (
     <>
-      <header className="flex justify-between md:ml-10 mr-auto mt-6 items-center">
+      <header className="flex justify-between md:ml-10 mr-auto pt-6 items-center">
         <div>
-          <img src={logo} className="md:w-auto w-16 md:m-auto mx-5" />
+          <Logo style={logoStyle} />
         </div>
-        <BurgerIcon />
-        <HeaderLinkes containerStyle={containerStyle} linksStyle={linksStyle} />
+        <BurgerIcon data={data} />
+        <HeaderLinkes
+          data={data}
+          containerStyle={containerStyle}
+          linksStyle={linksStyle}
+        />
       </header>
     </>
   );

@@ -1,6 +1,6 @@
 export default function Contact() {
   return (
-    <section id="contact" className=" rounded-xl py-5 bg-lightolive ">
+    <section id="contact" className="rounded-xl py-5 bg-lightolive ">
       <h1 className="text-center text-3xl font-bold text-lightcoffee mb-5">
         LET'S CONNECT
       </h1>
@@ -37,6 +37,10 @@ export default function Contact() {
           </p>
         </div>
       </div>
+      <p className="m-auto text-center text-lightcoffee text-xs font-bold">
+        Designed and developed by{' '}
+        <span className="text-offwhite">Ahmed Mohamed</span> 2024
+      </p>
     </section>
   );
 }

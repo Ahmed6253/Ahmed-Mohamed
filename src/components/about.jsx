@@ -1,22 +1,6 @@
-import { useEffect, useState } from 'react';
-
-export default function About() {
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
-  useEffect(() => {
-    async function getData() {
-      try {
-        const response = await fetch(
-          'https://portfolio-5f99d-default-rtdb.firebaseio.com/.json'
-        );
-        const fetchedData = await response.json();
-        return setData(fetchedData.skills);
-      } catch (error) {
-        setError(error.message);
-      }
-    }
-    getData();
-  }, []);
+export default function About(props) {
+  const skills = props.data?.skills;
+  const error = props.error;
   return (
     <section id="about" className="flex flex-col w-full  m-auto my-0 gap-5 ">
       <h1 className="text-lightcoffee text-2xl font-bold text-center">
@@ -37,16 +21,16 @@ export default function About() {
         My skills:
       </h1>
       <div className="text-offwhite text-lg m-auto flex gap-3 flex-wrap md:m-auto mx-6 md:w-1/2">
-        {data ? (
+        {skills ? (
           //success state
-          data.map((skill) => {
+          skills.map((skill) => {
             return (
               <span key={skill} className="bg-lightolive rounded py-1 px-2">
                 {skill}
               </span>
             );
           })
-        ) : !data && !error ? (
+        ) : !skills && !error ? (
           //loading state
           <>
             <span className="bg-lightolive rounded py-1 w-1/4 px-2 animate-pulse">
@@ -67,7 +51,7 @@ export default function About() {
           </>
         ) : (
           //error state
-          <p className=" bg-error rounded py-1  px-2 animate-pulse">
+          <p className=" bg-error rounded py-1 px-2 ">
             Something Went Wrong With Fetching My Skills!
           </p>
         )}

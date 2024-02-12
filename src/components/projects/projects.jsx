@@ -1,45 +1,27 @@
-import { useEffect } from 'react';
-import { useState } from 'react';
 import ProjectCard from './projectCard';
 
-export default function Projects() {
-  const [data, setData] = useState();
-  const [error, setError] = useState();
-  useEffect(() => {
-    async function getData() {
-      try {
-        const response = await fetch(
-          'https://portfolio-5f99d-default-rtdb.firebaseio.com/.json'
-        );
-        const fetchedData = await response.json();
-        setData(fetchedData.projects);
-      } catch (e) {
-        setError(e);
-      }
-    }
-    getData();
-  }, []);
-
+export default function Projects({ data, error }) {
+  const projects = data?.projects;
   return (
     <div id="projects" className="flex flex-col m-auto my-52 gap-16">
       <h1 className="text-lightcoffee text-2xl font-bold  text-center">
         My Projects
       </h1>
-      {data ? (
-        data.map((project) => {
+      {projects ? (
+        projects.map((project) => {
           return <ProjectCard key={project.projectName} data={project} />;
         })
-      ) : !data && !error ? (
+      ) : !projects && !error ? (
         <>
-          <span className="bg-lightolive rounded py-1 w-1/2 m-auto animate-pulse">
+          <span className="bg-lightolive rounded py-1 w-1/2 m-auto h-40 animate-pulse">
             <br />
           </span>
-          <span className="bg-lightolive rounded py-1 w-1/2 m-auto animate-pulse">
+          <span className="bg-lightolive rounded py-1 w-1/2 m-auto h-40 animate-pulse">
             <br />
           </span>
         </>
       ) : (
-        <p className=" bg-error rounded py-1  px-2 animate-pulse">
+        <p className=" bg-error rounded py-1 text-offwhite text-lg m-auto px-2">
           Something Went Wrong With Fetching My Projects!
         </p>
       )}

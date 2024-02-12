@@ -3,7 +3,7 @@ import HeaderLinkes from './headerLinks';
 import { AnimatePresence } from 'framer-motion';
 import { motion } from 'framer-motion';
 
-export default function BurgerIcon() {
+export default function BurgerIcon({ data }) {
   const [active, setActive] = useState(false);
   const handelClick = () => {
     setActive((curent) => !curent);
@@ -34,6 +34,7 @@ export default function BurgerIcon() {
       <AnimatePresence>
         {active && (
           <HeaderLinkes
+            data={data}
             animate={animate}
             containerStyle={containerStyle}
             linksStyle={linksStyle}
