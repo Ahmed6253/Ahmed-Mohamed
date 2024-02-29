@@ -17,13 +17,13 @@
 
 #m {
   animation-name: m;
-  animation-duration: 1s;
+  animation-duration: 1.2s;
 }
 
 #Line {
   transform-origin: center left;
   animation-name: line;
-  animation-duration: 0.6s;
+  animation-duration: 1s;
 }
 
 @keyframes line {

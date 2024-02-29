@@ -4,8 +4,8 @@ import './loading.css';
 import { createPortal } from 'react-dom';
 
 export default function Loading() {
+  setTimeout(() => setHide(true), 1400);
   const [hide, setHide] = useState(false);
-  setTimeout(() => setHide(true), 1300);
   return createPortal(
     <div className={hide ? 'loadingContHide' : 'loadingCont'}>
       <Logo />
